@@ -1,0 +1,52 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`With calls enter on input change 1`] = `
+Array [
+  "b",
+]
+`;
+
+exports[`With calls enter on mount with input 1`] = `
+Array [
+  "a",
+]
+`;
+
+exports[`With calls exit on input change 1`] = `
+Array [
+  "ab",
+  "a",
+]
+`;
+
+exports[`With calls exit on unmount with output and input 1`] = `
+Array [
+  "ab",
+  "a",
+]
+`;
+
+exports[`With calls render with output 1`] = `
+Array [
+  "ab",
+]
+`;
+
+exports[`With calls render with uninitialized output when lazy 1`] = `
+Array [
+  undefined,
+]
+`;
+
+exports[`With calls render with uninitialized output when lazy 2`] = `
+Array [
+  "ab",
+]
+`;
+
+exports[`With calls shouldUpdate on input change with previous and next input 1`] = `
+Array [
+  "a",
+  "b",
+]
+`;
