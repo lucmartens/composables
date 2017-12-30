@@ -1,0 +1,55 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`State render is called with new state when state changes 1`] = `
+Object {
+  "setState": [Function],
+  "setValue": [Function],
+  "value": 2,
+}
+`;
+
+exports[`State render is called with ref getters and setters 1`] = `
+Object {
+  "getRef": [Function],
+  "setRef": [Function],
+  "setState": [Function],
+}
+`;
+
+exports[`State render is called with state and setters 1`] = `
+Object {
+  "setState": [Function],
+  "setValue": [Function],
+  "setValue2": [Function],
+  "value": 1,
+  "value2": 2,
+}
+`;
+
+exports[`State setup accepts refs as an array 1`] = `
+Object {
+  "value": undefined,
+  "value2": undefined,
+}
+`;
+
+exports[`State setup accepts refs as an object 1`] = `
+Object {
+  "value": "a",
+  "value2": "b",
+}
+`;
+
+exports[`State setup accepts state as an array 1`] = `
+Object {
+  "value": undefined,
+  "value2": undefined,
+}
+`;
+
+exports[`State setup accepts state as an object 1`] = `
+Object {
+  "value": "a",
+  "value2": "b",
+}
+`;
