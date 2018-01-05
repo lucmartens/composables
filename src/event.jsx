@@ -2,30 +2,24 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import With from './with';
 
-const register = ({ target, listeners }) =>
-  Object.entries(listeners).forEach(([event, handler]) =>
-    target.addEventListener(event, handler)
-  );
+const comparator = (a, b) => a.target !== b.target || a.on !== b.on;
 
-const deregister = ({ target, ...listeners }) =>
-  Object.entries(listeners).forEach(([event, handler]) =>
-    target.removeEventListener(event, handler)
-  );
-
-const comparator = (a, b) => a.target !== b.target;
-
-export const Event = ({ target, ...listeners }) => (
+export const Event = ({ target, on, handler }) => (
   <With
     lazy
-    input={{ target, listeners }}
-    enter={register}
-    exit={() => deregister({ target, ...listeners })}
+    input={{ target, on, handler }}
+    enter={({ target, on, handler }) => target.addEventListener(on, handler)}
+    exit={(output, { target, on, handler }) =>
+      target.removeEventListener(on, handler)
+    }
     shouldUpdate={comparator}
   />
 );
 
 Event.propTypes = {
-  target: PropTypes.any.isRequired
+  target: PropTypes.any.isRequired,
+  on: PropTypes.string.isRequired,
+  handler: PropTypes.func.isRequired
 };
 
 Event.defaultProps = {

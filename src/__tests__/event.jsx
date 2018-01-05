@@ -11,10 +11,13 @@ describe('Event', () => {
     removeEventListener: jest.fn()
   };
 
+  const createWrapper = () =>
+    mount(<Event target={target} on="click" handler={handler} />);
+
   beforeEach(() => jest.resetAllMocks());
 
   test('registers handler', () => {
-    const wrapper = mount(<Event target={target} click={handler} />);
+    const wrapper = createWrapper();
     const calls = target.addEventListener.mock.calls;
 
     expect(calls.length).toBe(1);
@@ -23,7 +26,7 @@ describe('Event', () => {
   });
 
   test('deregisters handler', () => {
-    const wrapper = mount(<Event click={handler} target={target} />);
+    const wrapper = createWrapper();
     wrapper.unmount();
 
     const calls = target.removeEventListener.mock.calls;
@@ -33,7 +36,7 @@ describe('Event', () => {
   });
 
   test('deregisters and reregisters on target change', () => {
-    const wrapper = mount(<Event click={handler} target={target} />);
+    const wrapper = createWrapper();
     const newTarget = { addEventListener: jest.fn() };
     wrapper.setProps({ target: newTarget });
 
@@ -50,7 +53,7 @@ describe('Event', () => {
   });
 
   test('does not reregister on handler change', () => {
-    const wrapper = mount(<Event click={handler} target={target} />);
+    const wrapper = createWrapper();
     wrapper.setProps({ click: jest.fn() });
 
     const registerCalls = target.addEventListener.mock.calls;
