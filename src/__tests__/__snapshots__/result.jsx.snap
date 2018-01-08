@@ -1,0 +1,22 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Result converts promise to failed result object 1`] = `
+Object {
+  "error": true,
+  "value": "error_code",
+}
+`;
+
+exports[`Result converts promise to pending result object 1`] = `
+Object {
+  "pending": true,
+  "value": undefined,
+}
+`;
+
+exports[`Result converts promise to successful result object 1`] = `
+Object {
+  "done": true,
+  "value": "value",
+}
+`;
