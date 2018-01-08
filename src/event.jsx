@@ -1,18 +1,29 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+
+import Bind from './bind';
 import With from './with';
 
-const comparator = (a, b) => a.target !== b.target || a.on !== b.on;
+const register = ({ target, on, handler }) =>
+  target.addEventListener(on, handler);
 
-export const Event = ({ target, on, handler }) => (
-  <With
-    lazy
-    input={{ target, on, handler }}
-    enter={({ target, on, handler }) => target.addEventListener(on, handler)}
-    exit={(output, { target, on, handler }) =>
-      target.removeEventListener(on, handler)
-    }
-    shouldUpdate={comparator}
+const deregister = (output, { target, on, handler }) =>
+  target.removeEventListener(on, handler);
+
+const comparator = (previous, next) =>
+  previous.target !== next.target || previous.on !== next.on;
+
+const Event = ({ target, on, handler }) => (
+  <Bind
+    fn={handler}
+    render={handler => (
+      <With
+        input={{ target, on, handler }}
+        enter={register}
+        exit={deregister}
+        shouldUpdate={comparator}
+      />
+    )}
   />
 );
 
