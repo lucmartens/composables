@@ -4,14 +4,12 @@
   "main": "lib/react-helpers.js",
   "license": "MIT",
   "scripts": {
-    "build": "webpack --config webpack.config.js",
+    "build": "webpack",
     "test": "jest"
   },
   "jest": {
-    "snapshotSerializers": [
-      "enzyme-to-json/serializer"
-    ],
-    "setupTestFrameworkScriptFile": "<rootDir>setup.js"
+    "snapshotSerializers": ["enzyme-to-json/serializer"],
+    "setupTestFrameworkScriptFile": "<rootDir>setup-jest.js"
   },
   "devDependencies": {
     "babel-core": "^6.26.0",

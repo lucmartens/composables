@@ -45,22 +45,20 @@ class State extends React.Component {
   }
 
   render() {
-    const { children, render } = this.props;
-    return render
-      ? render({
-          ...this.state,
-          ...this.stateSetters,
-          ...this.referenceGetters,
-          ...this.referenceSetters
-        })
-      : null;
+    const { render } = this.props;
+    return render({
+      ...this.state,
+      ...this.stateSetters,
+      ...this.referenceGetters,
+      ...this.referenceSetters
+    });
   }
 }
 
 State.propTypes = {
   state: PropTypes.oneOfType([PropTypes.object, PropTypes.array]).isRequired,
   refs: PropTypes.oneOfType([PropTypes.object, PropTypes.array]).isRequired,
-  render: PropTypes.func
+  render: PropTypes.func.isRequired
 };
 
 State.defaultProps = {

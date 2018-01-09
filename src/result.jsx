@@ -4,28 +4,23 @@ import PropTypes from 'prop-types';
 import State from './state';
 import With from './with';
 
-const initialResult = { value: undefined, pending: true };
-
-const handlePromise = async (promise, setResult) => {
-  try {
-    const value = await promise;
-    setResult({ value, done: true });
-  } catch (error) {
-    setResult({ value: error, error: true });
-  }
-};
+const initial = { value: undefined, pending: true };
 
 const Result = ({ promise, render }) => (
   <State
-    state={{ result: initialResult }}
+    state={{ result: initial }}
     render={({ result, setResult }) => (
       <React.Fragment>
         <With
           input={promise}
-          enter={promise => handlePromise(promise, setResult)}
-          exit={() => setResult(initialResult)}
+          enter={promise =>
+            promise
+              .then(value => setResult({ value, done: true }))
+              .catch(value => setResult({ value, error: true }))
+          }
+          exit={() => setResult(initial)}
         />
-        {render && render(result)}
+        {render(result)}
       </React.Fragment>
     )}
   />
@@ -33,7 +28,7 @@ const Result = ({ promise, render }) => (
 
 Result.propTypes = {
   promise: PropTypes.object.isRequired,
-  render: PropTypes.func
+  render: PropTypes.func.isRequired
 };
 
 export default Result;

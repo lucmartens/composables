@@ -9,7 +9,7 @@ class Bind extends React.Component {
   }
 
   handler(...args) {
-    this.state.fn && this.state.fn(...args);
+    this.state.fn(...args);
   }
 
   componentWillReceiveProps(nextProps) {
@@ -20,13 +20,13 @@ class Bind extends React.Component {
 
   render() {
     const { render } = this.props;
-    return render ? render(this.handler) : null;
+    return render(this.handler);
   }
 }
 
 Bind.propTypes = {
   fn: PropTypes.func.isRequired,
-  render: PropTypes.func
+  render: PropTypes.func.isRequired
 };
 
 export default Bind;

@@ -41,7 +41,7 @@ class With extends React.Component {
   }
 
   render() {
-    const { render, children } = this.props;
+    const { render } = this.props;
     const { output } = this.state;
     return render ? render(output) : null;
   }
