@@ -9,7 +9,7 @@ const Hoc = ({ apply, render, ...props }) => (
   <With
     shouldUpdate={() => false}
     enter={() => apply(props)(PassThrough)}
-    render={el => React.cloneElement(el, { render })}
+    render={Component => <Component render={render} />}
   />
 );
 

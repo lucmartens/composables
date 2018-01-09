@@ -4,7 +4,7 @@ import { mount } from 'enzyme';
 import Hoc from '../hoc';
 
 describe('Hoc', () => {
-  const hoc = n => Component => <Component n={n + 1} />;
+  const hoc = n => Component => props => <Component n={n + 1} {...props} />;
 
   test('applies a higher order component', () => {
     const apply = jest.fn(() => hoc(0));
