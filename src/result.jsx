@@ -6,6 +6,16 @@ import With from './with';
 
 const initial = { value: undefined, pending: true };
 
+const handlePromise = (promise, setResult) => {
+  let canceled = false;
+
+  promise
+    .then(value => !canceled && setResult({ value, done: true }))
+    .catch(value => !canceled && setResult({ value, error: true }));
+
+  return () => (canceled = true);
+};
+
 const Result = ({ promise, render }) => (
   <State
     state={{ result: initial }}
@@ -13,12 +23,8 @@ const Result = ({ promise, render }) => (
       <React.Fragment>
         <With
           input={promise}
-          enter={promise =>
-            promise
-              .then(value => setResult({ value, done: true }))
-              .catch(value => setResult({ value, error: true }))
-          }
-          exit={() => setResult(initial)}
+          enter={promise => handlePromise(promise, setResult)}
+          exit={cancel => cancel() && setResult(initial)}
         />
         {render(result)}
       </React.Fragment>
