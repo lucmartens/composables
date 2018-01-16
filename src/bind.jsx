@@ -4,18 +4,18 @@ import PropTypes from 'prop-types';
 class Bind extends React.Component {
   constructor(props) {
     super(props);
-    this.state = { fn: props.fn };
     this.handler = this.handler.bind(this);
-  }
-
-  handler(...args) {
-    this.state.fn(...args);
+    this.fn = props.fn;
   }
 
   componentWillReceiveProps(nextProps) {
     if (nextProps.fn !== this.props.fn) {
-      this.setState({ fn: nextProps.fn });
+      this.fn = nextProps.fn;
     }
+  }
+
+  handler(...args) {
+    this.fn(...args);
   }
 
   render() {
