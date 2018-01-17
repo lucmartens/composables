@@ -18,7 +18,7 @@ const handlePromise = (promise, setResult) => {
 
 const Result = ({ promise, render }) => (
   <State
-    state={{ result: initial }}
+    initial={{ result: initial }}
     render={({ result, setResult }) => (
       <React.Fragment>
         <With

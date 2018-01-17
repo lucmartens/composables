@@ -3,15 +3,10 @@ import PropTypes from 'prop-types';
 
 const prefix = (str, pre) => pre + str[0].toUpperCase() + str.slice(1);
 
-const normalize = state =>
-  Array.isArray(state)
-    ? state.reduce((acc, key) => ({ ...acc, [key]: undefined }), {})
-    : state;
-
 class State extends React.Component {
   constructor(props) {
     super(props);
-    this.state = normalize(props.state);
+    this.state = props.initial;
     this.stateSetters = this.createStateSetters();
   }
 
@@ -26,12 +21,12 @@ class State extends React.Component {
 
   render() {
     const { render } = this.props;
-    return render({ ...this.state, ...this.stateSetters });
+    return render({ ...this.state, ...this.stateSetters, state: this.state });
   }
 }
 
 State.propTypes = {
-  state: PropTypes.oneOfType([PropTypes.object, PropTypes.array]).isRequired,
+  initial: PropTypes.oneOfType([PropTypes.object]).isRequired,
   render: PropTypes.func.isRequired
 };
 

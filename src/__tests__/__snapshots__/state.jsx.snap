@@ -4,6 +4,9 @@ exports[`State render is called with new state when state changes 1`] = `
 Object {
   "setState": [Function],
   "setValue": [Function],
+  "state": Object {
+    "value": 2,
+  },
   "value": 2,
 }
 `;
@@ -13,15 +16,12 @@ Object {
   "setState": [Function],
   "setValue": [Function],
   "setValue2": [Function],
+  "state": Object {
+    "value": 1,
+    "value2": 2,
+  },
   "value": 1,
   "value2": 2,
-}
-`;
-
-exports[`State setup accepts state as an array 1`] = `
-Object {
-  "value": undefined,
-  "value2": undefined,
 }
 `;
 
