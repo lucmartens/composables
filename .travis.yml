@@ -3,6 +3,7 @@ node_js:
   - "8"
 cache: yarn
 deploy:
+  skip_cleanup: true
   provider: npm
   email: lucmartens92@gmail.com
   api_key:
