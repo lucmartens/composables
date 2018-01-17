@@ -12,11 +12,7 @@ class State extends React.Component {
   constructor(props) {
     super(props);
     this.state = normalize(props.state);
-    this.references = normalize(props.refs);
-
     this.stateSetters = this.createStateSetters();
-    this.referenceGetters = this.createReferenceGetters();
-    this.referenceSetters = this.createReferenceSetters();
   }
 
   createStateSetters() {
@@ -28,42 +24,19 @@ class State extends React.Component {
     }, initial);
   }
 
-  createReferenceGetters() {
-    return Object.keys(this.references).reduce((acc, key) => {
-      const name = prefix(key, 'get');
-      const fn = () => this.references[key];
-      return { ...acc, [name]: fn };
-    }, {});
-  }
-
-  createReferenceSetters() {
-    return Object.keys(this.references).reduce((acc, key) => {
-      const name = prefix(key, 'set');
-      const fn = val => (this.references[key] = val);
-      return { ...acc, [name]: fn };
-    }, {});
-  }
-
   render() {
     const { render } = this.props;
-    return render({
-      ...this.state,
-      ...this.stateSetters,
-      ...this.referenceGetters,
-      ...this.referenceSetters
-    });
+    return render({ ...this.state, ...this.stateSetters });
   }
 }
 
 State.propTypes = {
   state: PropTypes.oneOfType([PropTypes.object, PropTypes.array]).isRequired,
-  refs: PropTypes.oneOfType([PropTypes.object, PropTypes.array]).isRequired,
   render: PropTypes.func.isRequired
 };
 
 State.defaultProps = {
-  state: {},
-  refs: {}
+  state: {}
 };
 
 export default State;
