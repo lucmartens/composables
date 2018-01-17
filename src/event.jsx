@@ -18,6 +18,7 @@ const Event = ({ target, on, handler }) => (
         input={{ target, on, handler }}
         enter={register}
         exit={deregister}
+        lazy
       />
     )}
   />
