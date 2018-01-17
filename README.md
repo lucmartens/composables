@@ -11,6 +11,8 @@ Add React state to a component.
 ### Example
 
 ```js
+import { State } from 'react-helpers';
+
 <State
   initial={{ open: false }}
   render={({ open, setOpen }) => (
@@ -43,6 +45,8 @@ state of the promise.
 ### Example
 
 ```js
+import { Result } from 'react-helpers';
+
 <Result
   promise={promise}
   render={({ value, pending, error, done }) => (
@@ -63,7 +67,7 @@ Promise to convert to a result.
 
 #### render - function - required
 
-Function to display or further process the the `result` object
+Function to display or further process the `result` object
 
 ## `With`
 
@@ -109,12 +113,13 @@ function to display or further process the produced `output`.
 
 #### shouldUpdate - function(`previousInput`, `nextInput`)
 
-Predicate function to determine whether a change in `input` constitutes calling
-`exit` and `enter` again. Defaults to a negative shallow equal check.
+Predicate function to determine whether a change in the `input` prop constitutes
+calling `exit` and `enter` again. Defaults to a negative shallow equal check.
 
 #### lazy - boolean
 
 When `lazy` is true, the `enter` function will be called after the component has
-mounted. This can be beneficial to the performance since `enter` is blocking the
-component's first render. Note that this means `render` will be called before
-`enter` and thus the output can be undefined. Defaults to false.
+mounted. This can be beneficial to the speed of your component's first render
+and is especially useful when your `enter` function performs a slow synchronous
+operation (e.g local storage access). A consequence of delaying the `enter`
+function is that `render` can be called with `undefined` output.
