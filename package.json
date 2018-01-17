@@ -1,6 +1,6 @@
 {
   "name": "composables",
-  "version": "0.1.0-alpha.3",
+  "version": "0.1.0-alpha.4",
   "description": "Primitives to compose React component behavior.",
   "main": "lib/composables.js",
   "files": ["lib", "src"],
