@@ -1,7 +1,7 @@
 {
-  "name": "react-helpers",
+  "name": "composables",
   "version": "1.0.0",
-  "main": "lib/react-helpers.js",
+  "main": "lib/composables.js",
   "license": "MIT",
   "scripts": {
     "build": "webpack",

@@ -1,4 +1,4 @@
-# React Helpers
+# Composables
 
 Primitives to dynamically compose your React component's behavior.
 
@@ -11,7 +11,7 @@ Add React state to a component.
 ### Example
 
 ```js
-import { State } from 'react-helpers';
+import { State } from 'composables';
 
 <State
   initial={{ open: false }}
@@ -45,7 +45,7 @@ state of the promise.
 ### Example
 
 ```js
-import { Result } from 'react-helpers';
+import { Result } from 'composables';
 
 <Result
   promise={promise}
@@ -76,7 +76,7 @@ Produce side effects based on the component's lifecycle and props.
 ### Example
 
 ```js
-import { With } from 'react-helpers';
+import { With } from 'composables';
 
 const FileImage = ({ file, ...props }) => (
   <With

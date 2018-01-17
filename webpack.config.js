@@ -5,7 +5,7 @@ module.exports = {
 
   output: {
     path: `${__dirname}/lib/`,
-    filename: `react-helpers.js`,
+    filename: `composables.js`,
     libraryTarget: 'commonjs2'
   },
 
