@@ -4,6 +4,37 @@ Primitives to dynamically compose your React component's behavior.
 
 # Component Reference
 
+## `State`
+
+Add React state to a component.
+
+### Example
+
+```js
+<State
+  initial={{ open: false }}
+  render={({ open, setOpen }) => (
+    <Menu>
+      <Button onClick={() => setOpen(!open)}>Toggle</Button>
+      {open && <MenuItems />}
+    </Menu>
+  )}
+/>;
+```
+
+### Props
+
+#### initial - object - required
+
+The `initial` state.
+
+#### render - function - required
+
+Function to display or further process the state. `render` is called with the
+current `state` and a `setState` function. In addition, `render` is called with
+the value of each entry in the `initial` state object and a corresponding setter
+function.
+
 ## `Result`
 
 Convert a promise to a result. The content of the result object depends on the
