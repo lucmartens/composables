@@ -1,9 +1,11 @@
 {
   "name": "composables",
-  "version": "1.0.0",
+  "version": "0.1.0-alpha.3",
+  "description": "Primitives to compose React component behavior.",
   "main": "lib/composables.js",
-  "license": "MIT",
+  "files": ["lib", "src"],
   "scripts": {
+    "prepublish": "yarn build",
     "build": "webpack",
     "test": "jest"
   },
@@ -11,6 +13,11 @@
     "snapshotSerializers": ["enzyme-to-json/serializer"],
     "setupTestFrameworkScriptFile": "<rootDir>setup-jest.js"
   },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/lucmartens/composables.git"
+  },
+  "license": "MIT",
   "devDependencies": {
     "babel-core": "^6.26.0",
     "babel-loader": "^7.1.2",

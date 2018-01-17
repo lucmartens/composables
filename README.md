@@ -1,6 +1,11 @@
 # Composables
 
-Primitives to dynamically compose your React component's behavior.
+Primitives to compose React component behavior.
+
+# Render prop pattern
+
+This package makes heavy use of the render prop pattern. See the
+[React docs](https://reactjs.org/docs/render-props.html) for more details.
 
 # Component Reference
 
