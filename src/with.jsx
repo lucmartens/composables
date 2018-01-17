@@ -1,6 +1,8 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
+import equals from './equals';
+
 class With extends React.Component {
   constructor(props) {
     super(props);
@@ -58,7 +60,7 @@ With.propTypes = {
 
 With.defaultProps = {
   lazy: false,
-  shouldUpdate: (a, b) => a !== b
+  shouldUpdate: (a, b) => !equals(a, b)
 };
 
 export default With;

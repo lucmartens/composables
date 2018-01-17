@@ -110,7 +110,7 @@ function to display or further process the produced `output`.
 #### shouldUpdate - function(`previousInput`, `nextInput`)
 
 Predicate function to determine whether a change in `input` constitutes calling
-`exit` and `enter` again. Defaults to a negative strict equality check.
+`exit` and `enter` again. Defaults to a negative shallow equal check.
 
 #### lazy - boolean
 
