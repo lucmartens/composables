@@ -9,7 +9,7 @@
     "prepublish": "yarn build",
     "build": "yarn run build:commonjs && yarn run build:es",
     "build:commonjs": "webpack",
-    "build:es": "babel -d es/ src/",
+    "build:es": "babel -d es/ --ignore /__tests__/ src/ ",
     "test": "jest"
   },
   "jest": {
