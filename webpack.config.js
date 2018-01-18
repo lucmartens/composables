@@ -25,5 +25,7 @@ module.exports = {
 
   externals: {
     react: 'commonjs react'
-  }
+  },
+
+  plugins: [new webpack.optimize.UglifyJsPlugin()]
 };

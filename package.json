@@ -3,10 +3,13 @@
   "version": "0.1.0-alpha.4",
   "description": "Primitives to compose React component behavior.",
   "main": "lib/composables.js",
-  "files": ["lib", "src"],
+  "module": "es/index.js",
+  "files": ["lib", "src", "es"],
   "scripts": {
     "prepublish": "yarn build",
-    "build": "webpack",
+    "build": "yarn run build:commonjs && yarn run build:es",
+    "build:commonjs": "webpack",
+    "build:es": "babel -d es/ src/",
     "test": "jest"
   },
   "jest": {
@@ -19,6 +22,7 @@
   },
   "license": "MIT",
   "devDependencies": {
+    "babel-cli": "^6.26.0",
     "babel-core": "^6.26.0",
     "babel-loader": "^7.1.2",
     "babel-plugin-transform-object-rest-spread": "^6.26.0",
