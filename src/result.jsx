@@ -4,14 +4,22 @@ import PropTypes from 'prop-types';
 import State from './state';
 import With from './with';
 
-const initial = { value: undefined, pending: true };
+const initial = { value: undefined, pending: true, done: false, error: false };
 
 const handlePromise = (promise, setResult) => {
   let canceled = false;
 
   promise
-    .then(value => !canceled && setResult({ value, done: true }))
-    .catch(value => !canceled && setResult({ value, error: true }));
+    .then(
+      value =>
+        !canceled &&
+        setResult({ value, pending: false, done: true, error: false })
+    )
+    .catch(
+      value =>
+        !canceled &&
+        setResult({ value, pending: false, done: false, error: true })
+    );
 
   return () => (canceled = true);
 };

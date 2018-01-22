@@ -2,13 +2,17 @@
 
 exports[`Result converts promise to failed result object 1`] = `
 Object {
+  "done": false,
   "error": true,
+  "pending": false,
   "value": "error_code",
 }
 `;
 
 exports[`Result converts promise to pending result object 1`] = `
 Object {
+  "done": false,
+  "error": false,
   "pending": true,
   "value": undefined,
 }
@@ -17,6 +21,8 @@ Object {
 exports[`Result converts promise to successful result object 1`] = `
 Object {
   "done": true,
+  "error": false,
+  "pending": false,
   "value": "value",
 }
 `;
