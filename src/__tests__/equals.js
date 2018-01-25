@@ -40,4 +40,12 @@ describe('Equals', () => {
     expect(equals({}, {})).toBe(true);
     expect(equals({ a: 1, b: 2 }, { a: 1, b: 2 })).toBe(true);
   });
+
+  test('promise equality', () => {
+    const promiseA = Promise.resolve();
+    const promiseB = Promise.resolve();
+
+    expect(equals(promiseA, promiseB)).toBe(false);
+    expect(equals(promiseA, promiseA)).toBe(true);
+  });
 });

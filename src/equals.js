@@ -38,6 +38,10 @@ const shallowEqual = (a, b) => {
     return false;
   }
 
+  if (Promise.resolve(a) === a && Promise.resolve(b) === b) {
+    return a === b;
+  }
+
   if (typeof a === 'object' && Array.isArray(a)) {
     return arrayShallowEqual(a, b);
   }
