@@ -1,6 +1,6 @@
 {
   "name": "composables",
-  "version": "0.2.0",
+  "version": "0.3.0",
   "description": "Primitives to compose React component behavior.",
   "main": "lib/composables.js",
   "module": "es/index.js",

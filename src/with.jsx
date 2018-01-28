@@ -1,19 +1,13 @@
-import React from 'react';
-import PropTypes from 'prop-types';
+import React from "react";
+import PropTypes from "prop-types";
 
-import equals from './equals';
+import equals from "./equals";
 
 class With extends React.Component {
   constructor(props) {
     super(props);
-    this.state = { output: undefined };
-  }
-
-  componentWillMount() {
-    const { lazy, enter, input } = this.props;
-    if (!lazy && enter) {
-      this.setState({ output: enter(input) });
-    }
+    const { lazy, enter, input } = props;
+    this.state = { output: !lazy && enter ? enter(input) : undefined };
   }
 
   componentDidMount() {

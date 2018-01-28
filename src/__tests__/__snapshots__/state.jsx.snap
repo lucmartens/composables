@@ -2,30 +2,27 @@
 
 exports[`State render is called with new state when state changes 1`] = `
 Object {
-  "setState": [Function],
-  "setValue": [Function],
-  "state": Object {
+  "value": Object {
+    "set": [Function],
     "value": 2,
   },
-  "value": 2,
 }
 `;
 
-exports[`State render is called with state and setters 1`] = `
+exports[`State render is called with state objects 1`] = `
 Object {
-  "setState": [Function],
-  "setValue": [Function],
-  "setValue2": [Function],
-  "state": Object {
+  "value": Object {
+    "set": [Function],
     "value": 1,
-    "value2": 2,
   },
-  "value": 1,
-  "value2": 2,
+  "value2": Object {
+    "set": [Function],
+    "value": 2,
+  },
 }
 `;
 
-exports[`State setup accepts state as an object 1`] = `
+exports[`State setup accepts initial state as an object 1`] = `
 Object {
   "value": "a",
   "value2": "b",
